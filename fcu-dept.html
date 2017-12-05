@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+<h2>請選擇學院</h2>
+
+
+
+<select id = "college-list" onchange = "myFunction()">
+
+
+</select>
+<h2>當你選擇學院後，下列選單會列出該學院的所有科系</h2>
+<p id="demo"></p>
+
+<select id = "dept"></select>
+
+<script>
+	var colleges = ["商學院","工學院","理學院","國際科技與管理學院",
+			"資電學院","人文社會學院","建設學院"];
+	var business = ["會計系","財稅學系","行銷系"];
+	var tech = ["化學工程學系","機械與電腦輔助工程學系","纖維與複合材料學系"];
+	var science = ["光電學系","應用數學系","環境工程與科學學系"];
+	var tech_manag = ["澳洲墨爾本皇家理工大學商學與創新雙學士學位學程 ","美國聖荷西州立大學商學大數據分析雙學士學位學程",
+			"西班牙薩拉戈薩大學物流供應鏈管理與創新創業雙碩士學位學程"];
+	var information = ["資訊工程學系","電機工程學系","電子工程學系"];
+	var social = ["中國文學系","外國語文學系 ","歷史與文物研究所 "];
+	var construction = ["土木工程學系","土地管理學系  ","運輸與物流學系 "];
+
+	var collegeElm = document.getElementById("college-list");
+	var deptElm = document.getElementById("dept");
+	
+	populateData(collegeElm,colleges);
+	populateData(deptElm,business);
+	
+	function myFunction(){
+		var index = document.getElementById("college-list").value;
+		switch(index){
+		case "0":
+			populateData(deptElm,business);
+			break;
+		case "1":
+			populateData(deptElm,tech);
+			break;
+		case "2":
+			populateData(deptElm,science);
+			break;
+		case "3":
+			populateData(deptElm,tech_manag);
+			break;
+		case "4":
+			populateData(deptElm,information);
+			break;
+		case "5":
+			populateData(deptElm,social);
+			break;
+		case "6":
+			populateData(deptElm,construction);
+			break;
+		default:
+			console.log("Not Accept!");
+			break;
+		}
+	}
+	
+	function populateData(selElm,data){
+		var options = "";
+		for(var i = 0;i<data.length;i++){
+			options = options + '<option value="'+i+'">' + data[i] + '</option>';
+		}
+		selElm.innerHTML = options;
+	}
+</script>
+
+</body>
+</html>
